@@ -19,5 +19,5 @@ async def start(client, m: Message):
                              "✨ Channel", url="https://t.me/levinachannel")
                        ]]
                     ))
-      else:
-         await m.reply("**✨ bot is online now ✨**")
+   else:
+      await m.reply("**✨ bot is online now ✨**")
