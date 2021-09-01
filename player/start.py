@@ -1,15 +1,23 @@
 from pyrogram import Client, filters
-from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup 
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, Chat, CallbackQuery
 
 @Client.on_message(filters.command("start"))
 async def start(client, m: Message):
    if m.chat.type == 'private':
-       await m.reply(f"**I am A advanced Anime Theme VC Video Player created for playing vidio in the voice chats of Telegram Groups & Channels. \n\n**To use it:-** __ \n1) Add this Bot to your Group and Make it Admin \n2) Add__ @YuiVideoPlayer __to your Group__ \n3) **Commands** : \n`/stream` (IN REPLY TO A VIDEO) \n`/stop`",   
-                            reply_markup=InlineKeyboardMarkup(
-                                [[
-                                     InlineKeyboardButton(
-                                            "Dev", url="https://t.me/AmiFutami")
-                                    ]]
-                            ))
-   else:
-      await m.reply("**Yui is Alive! ✨**")
+      await m.reply(f"**Hello {message.from_user.mention} i'm a video stream bot, i've been created for streaming video on Group video chat.**\n\n**To know how to use me, click the help button below** 👇🏻",
+                    reply_markup=InlineKeyboardMarkup(
+                       [[
+                          InlineKeyboardButton(
+                             "❔ HOW TO USE THIS BOT", callback_data="cbguide")
+                       ],[
+                          InlineKeyboardButton(
+                             "👩🏻‍💻 Developer", url="https://t.me/dlwrml")
+                       ],[
+                          InlineKeyboardButton(
+                             "💭 Group", url="https://t.me/VeezSupportGroup"),
+                          InlineKeyboardButton(
+                             "✨ Channel", url="https://t.me/levinachannel")
+                       ]]
+                    ))
+      else:
+         await m.reply("**✨ bot is online now ✨**")
