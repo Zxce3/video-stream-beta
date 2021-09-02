@@ -14,7 +14,7 @@ VIDEO_CALL = {}
 async def stream(client, m: Message):
     replied = m.reply_to_message
     if not replied:
-        await m.reply("`please reply to a video!`")
+        await m.reply("`please reply to a video !`")
     elif replied.video or replied.document:
         msg = await m.reply("🔁 `Downloading...`")
         chat_id = m.chat.id
@@ -34,13 +34,13 @@ async def stream(client, m: Message):
         except Exception as e:
             await msg.edit(f"**Error** -- `{e}`")
     else:
-        await m.reply("`please reply to a video!`")
+        await m.reply("`please reply to a video !`")
 
 @Client.on_message(filters.command("stop"))
 async def stopvideo(client, m: Message):
     chat_id = m.chat.id
     try:
         await VIDEO_CALL[chat_id].stop()
-        await m.reply("**⏹️ streaming stopped !**")
+        await m.reply("**⏹️ streaming stopped !\n\n✨ thank you for using this bot.**")
     except Exception as e:
         await m.reply(f"**🚫 Error** - `{e}`")
