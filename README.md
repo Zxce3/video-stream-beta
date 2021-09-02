@@ -29,3 +29,17 @@ The easy way to host this bot, deploy to Heroku
 
 ### Support & Updates 🎑
 <a href="https://t.me/VeezSupportGroup"><img src="https://img.shields.io/badge/Join-Group%20Support-blue.svg?style=for-the-badge&logo=Telegram"></a> <a href="https://t.me/levinachannel"><img src="https://img.shields.io/badge/Join-Updates%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
+
+## VPS Deployment
+- sudo apt update && ugrade -y
+- sudo apt install python3-pip -y virtualenv
+- sudo apt install ffmpeg -y
+- git clone https://github.com/levina-lab/video-stream  #Clone your repo.
+- cd video-stream
+- virtualenv env #Create Virtual Environment.
+- source env/bin/activate #Activate Virtual Environment
+- pip3 install --upgrade pip
+- pip3 install -U -r requirements.txt
+- sudo nano config.py #Fill it with your variables value.
+- python3 -m bot
+ 
