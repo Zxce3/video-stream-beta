@@ -22,7 +22,7 @@ The easy way to host this bot, deploy to Heroku
 
 
 # Special Credits 💖
-- [SammyXD](https://github.com/Sammy-XD)
+- [SammyXD](https://github.com/Sammy-XD) Dev
 - [Levina](https://github.com/levina-lab) Dev
 - [MarshalX](https://github.com/MarshalX) for [pytgcalls](https://github.com/MarshalX)
 - [Dan](https://github.com/delivrance) for [Pyrogram](https://github.com/pyrogram)
