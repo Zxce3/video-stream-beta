@@ -4,7 +4,7 @@ from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, 
 @Client.on_message(filters.command("start"))
 async def start(client, m: Message):
    if m.chat.type == 'private':
-      await m.reply(f"**Hello {message.from_user.mention} i'm a video stream bot, i've been created for streaming video on Group video chat.**\n\n**To know how to use me, click the help button below** 👇🏻",
+      await m.reply(f"**Hello there 👋🏻, i'm a video stream bot, i've been created for streaming video on Group video chat.**\n\n**To know how to use me, click the help button below** 👇🏻",
                     reply_markup=InlineKeyboardMarkup(
                        [[
                           InlineKeyboardButton(
