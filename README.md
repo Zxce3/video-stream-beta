@@ -2,7 +2,8 @@
 
 telegram bot project for streaming video on telegram video chat, powered by [tgcalls](https://github.com/MarshalX/tgcalls) and [pyrogram](https://github.com/pyrogram/pyrogram)
 
-🛠 Commands:
+
+## 🛠 Commands:
 - /stream (reply to video) - to start video streaming
 - /stop - to stop video streaming
 
