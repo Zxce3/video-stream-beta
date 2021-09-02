@@ -21,8 +21,8 @@ The easy way to host this bot, deploy to Heroku
 [![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/levina-lab/video-stream&envs=API_ID,API_HASH,BOT_TOKEN,SESSION_NAME)
 
 
-# Credits 💖
-
+# Special Credits 💖
+- [SammyXD](https://github.com/Sammy-XD)
 - [Levina](https://github.com/levina-lab) Dev
 - [MarshalX](https://github.com/MarshalX) for [pytgcalls](https://github.com/MarshalX)
 - [Dan](https://github.com/delivrance) for [Pyrogram](https://github.com/pyrogram)
