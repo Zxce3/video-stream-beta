@@ -23,7 +23,7 @@ async def cbguide(_, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex("cbstart"))
 async def cbstart(_, query: CallbackQuery):
-  await query.edit_message_text(f"**Hello, i'm a video stream bot, i've been created for streaming video on Group video chat.**\n\n**To know how to use me, click the help button below** 👇",
+  await query.edit_message_text(f"✨ **Hello, I am a telegram video streaming bot.**\n\n💭 **I was created to stream videos in group video chats easily.**\n\n❔ **To find out how to use me, please press the help button below** 👇🏻",
                                 reply_markup=InlineKeyboardMarkup(
                        [[
                           InlineKeyboardButton(
