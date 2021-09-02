@@ -28,7 +28,7 @@ async def stream(client, m: Message):
         try:
             group_call = group_call_factory.get_file_group_call(f'vid-{chat_id}.raw')
             await group_call.start(chat_id)
-            await group_call.set_video_capture(video)
+            await group_call.set_video_capture(video, repeat=False)
             VIDEO_CALL[chat_id] = group_call
             await msg.edit("💡 **Video streaming started !**\n\n🟡 **join to video chat to watch the video.**")
         except Exception as e:
