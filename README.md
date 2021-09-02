@@ -8,7 +8,7 @@ telegram bot project for streaming video on telegram video chat, powered by [tgc
 - /stop - to stop video streaming
 
 
-🧪 Get STRING_SESSION from below:
+## 🧪 Get STRING_SESSION from below:
 
 TAP THIS: [![GenerateString](https://img.shields.io/badge/repl.it-generateString-yellowgreen)](https://replit.com/@levinalab/StringSession#main.py)
 
