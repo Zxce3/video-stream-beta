@@ -11,6 +11,9 @@ async def start(client, m: Message):
                              "❔ HOW TO USE THIS BOT", callback_data="cbguide")
                        ],[
                           InlineKeyboardButton(
+                             "🌐 Terms & Condition", callback_data="cbinfo")
+                       ],[
+                          InlineKeyboardButton(
                              "👩🏻‍💻 Developer", url="https://t.me/dlwrml")
                        ],[
                           InlineKeyboardButton(
