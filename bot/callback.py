@@ -13,6 +13,8 @@ async def cbguide(_, query: CallbackQuery):
 5.) type /stream (reply to video) to start streaming.
 6.) type /stop to end the video streaming.
 
+📝 **note: stream & stop command can only be executed by group admin only!**
+
 ⚡ __Maintained by Veez Project Team__""",
     reply_markup=InlineKeyboardMarkup(
       [[
@@ -23,7 +25,7 @@ async def cbguide(_, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex("cbstart"))
 async def cbstart(_, query: CallbackQuery):
-  await query.edit_message_text(f"✨ **Hello, I am a telegram video streaming bot.**\n\n💭 **I was created to stream videos in group video chats easily.**\n\n❔ **To find out how to use me, please press the help button below** 👇🏻",
+  await query.edit_message_text(f"✨ **Hello there, I am a telegram video streaming bot.**\n\n💭 **I was created to stream videos in group video chats easily.**\n\n❔ **To find out how to use me, please press the help button below** 👇🏻",
                                 reply_markup=InlineKeyboardMarkup(
                        [[
                           InlineKeyboardButton(
@@ -45,7 +47,7 @@ async def cbstart(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbinfo"))
 async def cbinfo(_, query: CallbackQuery):
   await query.edit_message_text(
-    f"""🌐 **bot information**
+    f"""🌐 **bot information !**
 
 🤖 __This bot was created to stream video in telegram group video chats using several methods from WebRTC.__
 
@@ -55,7 +57,7 @@ async def cbinfo(_, query: CallbackQuery):
 
 👩🏻‍✈️ » [Levina](https://github.com/levina-lab)
 🤵🏻 » [Sammy-XD](https://github.com/Sammy-XD)
-🤵🏻 » [Achu](https://github.com/Achu2234)
+👩🏻‍✈️ » [Achu](https://github.com/Achu2234)
 
 __This bot licensed under GNU-GPL 3.0 License__""",
     reply_markup=InlineKeyboardMarkup(
