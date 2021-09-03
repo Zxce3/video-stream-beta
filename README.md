@@ -20,7 +20,7 @@ telegram bot project for streaming video on telegram video chat, powered by [tgc
 - /song (song name) - to download song
 - /vsong (video name) - to download video
 
-📝 Note: From now, /vcstream & /vstop command can only be used by group admins.
+📝 Note: From now, /vstream & /vstop command can only be used by group admins.
 
 ## 🧪 Get STRING_SESSION from below:
 
