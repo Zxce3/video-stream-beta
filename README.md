@@ -20,7 +20,7 @@ telegram bot project for streaming video on telegram video chat, powered by [tgc
 - /song (song name) - to download song
 - /vsong (video name) - to download video
 
-📝 note: from now, stream & stop command can only be used by group admins.
+📝 Note: From now, /vcstream & /vstop command can only be used by group admins.
 
 ## 🧪 Get STRING_SESSION from below:
 
@@ -46,7 +46,7 @@ The easy way to host this bot, deploy to Heroku
 
 ## VPS Deployment
 ```sh
-- sudo apt update && ugrade -y
+- sudo apt update && upgrade -y
 - sudo apt install python3-pip -y virtualenv
 - sudo apt install ffmpeg -y
 - git clone https://github.com/levina-lab/video-stream
