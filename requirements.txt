@@ -1,7 +1,14 @@
 TgCrypto
 ffmpeg-python
+future
 git+https://github.com/pyrogram/pyrogram@master
 pytgcalls==3.0.0.dev10
+wget
 tswift
+asyncio
+requests
+aiohttp
+aiofiles
+youtube_dl
 youtube_search_python
 youtube_search
