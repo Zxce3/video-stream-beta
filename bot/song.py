@@ -318,7 +318,7 @@ async def ytmusic(client, message: Message):
         progress_args=(
             pablo,
             c_time,
-            f"**uploading {urlissed} song from youtube music!**",
+            f"📤 **Uploading {urlissed} song from youtube music!**",
             file_stark,
         ),
     )
