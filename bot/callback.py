@@ -2,6 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
 from config import ASSISTANT_NAME as bn
 
+
 @Client.on_callback_query(filters.regex("cbguide"))
 async def cbguide(_, query: CallbackQuery):
   await query.edit_message_text(
@@ -23,6 +24,7 @@ async def cbguide(_, query: CallbackQuery):
           "🏡 Go Back", callback_data="cbstart")
       ]]
     ))
+
 
 @Client.on_callback_query(filters.regex("cbstart"))
 async def cbstart(_, query: CallbackQuery):
@@ -47,6 +49,7 @@ async def cbstart(_, query: CallbackQuery):
                              "🎑 Channel", url="https://t.me/levinachannel")
                        ]]
                     ))
+
 
 @Client.on_callback_query(filters.regex("cbinfo"))
 async def cbinfo(_, query: CallbackQuery):
@@ -99,3 +102,8 @@ async def cblist(_, query: CallbackQuery):
           "🏡 Go Back", callback_data="cbstart")
       ]]
     ))
+
+
+@Client.on_callback_query(filters.regex("cls"))
+async def close(_, query: CallbackQuery):
+    await query.message.delete()
