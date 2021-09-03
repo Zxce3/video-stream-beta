@@ -70,3 +70,30 @@ __This bot licensed under GNU-GPL 3.0 License__""",
     ),
     disable_web_page_preview=True
   )
+
+@Client.on_callback_query(filters.regex("cblist"))
+async def cblist(_, query: CallbackQuery):
+  await query.edit_message_text(
+    f"""📚 All Command List:
+
+» /vstream (reply to video or file) - to stream video
+» /vstop - end the video streaming
+» /song (song name) - download song from YT
+» /vsong (video name) - download video from YT
+» /lyric (song name) - lyric scrapper
+
+🎊 FUN CMD:
+
+» /asupan - check it by yourself
+» /chika - check it by yourself
+» /wibu - check it by yourself
+» /truth - check it by yourself
+» /dare - check it by yourself
+
+⚡ __Maintained by Veez Project Team__""",
+    reply_markup=InlineKeyboardMarkup(
+      [[
+        InlineKeyboardButton(
+          "🏡 Go Back", callback_data="cbstart")
+      ]]
+    ))
