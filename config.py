@@ -1,6 +1,11 @@
 import os
 from os import getenv
+from dotenv import load_dotenv
 
+if os.path.exists("local.env"):
+    load_dotenv("local.env")
+
+load_dotenv()
 admins = {}
 API_ID = int(os.getenv("API_ID", "6"))
 API_HASH = os.getenv("API_HASH", "eb06d4abfb49dc3eeb1aeb98ae0f581e")
