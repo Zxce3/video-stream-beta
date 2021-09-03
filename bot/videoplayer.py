@@ -3,15 +3,17 @@ import asyncio
 from pytgcalls import GroupCallFactory
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from config import API_ID, API_HASH, SESSION_NAME
+from config import API_ID, API_HASH, SESSION_NAME, BOT_USERNAME
 from helpers.decorators import authorized_users_only
+from helpers.filters import command
+
 
 app = Client(SESSION_NAME, API_ID, API_HASH)
 group_call_factory = GroupCallFactory(app, GroupCallFactory.MTPROTO_CLIENT_TYPE.PYROGRAM)
 VIDEO_CALL = {}
 
 
-@Client.on_message(filters.command("vstream"))
+@Client.on_message(command(["vstream", f"vstream@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
 async def stream(client, m: Message):
     replied = m.reply_to_message
@@ -44,7 +46,8 @@ async def stream(client, m: Message):
     else:
         await m.reply("🔺 **please reply to a video or video file!**")
 
-@Client.on_message(filters.command("vstop"))
+
+@Client.on_message(command(["vstop", f"vstop@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
 async def stopvideo(client, m: Message):
     chat_id = m.chat.id
