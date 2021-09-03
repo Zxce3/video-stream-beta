@@ -26,4 +26,17 @@ async def start(client, m: Message):
                        ]]
                     ))
    else:
-      await m.reply("**✨ bot is online now ✨**")
+      await m.reply("**✨ bot is online now ✨**",
+                          reply_markup=InlineKeyboardMarkup(
+                       [[
+                          InlineKeyboardButton(
+                             "❔ HOW TO USE THIS BOT", callback_data="cbguide")
+                       ],[
+                          InlineKeyboardButton(
+                             "🌐 Search Youtube", switch_inline_query='s ')
+                       ],[
+                          InlineKeyboardButton(
+                             "📚 Command List", callback_data="cblist")
+                       ]]
+                    )
+      )
