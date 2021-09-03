@@ -18,7 +18,7 @@ VIDEO_CALL = {}
 async def stream(client, m: Message):
     replied = m.reply_to_message
     if not replied:
-        await m.reply("💭 **Give me a video to stream**\n\n» Use the /stream command by replying to the video.")
+        await m.reply("💭 **Give me a video to stream**\n\n» Use the /vstream command by replying to the video.")
     elif replied.video or replied.document:
         file = replied.video or replied.document
         types = file.mime_type.split("/")
