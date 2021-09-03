@@ -34,6 +34,22 @@ The easy way to host this bot, deploy to Heroku
 # Railway Deployment 🚄
 [![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/levina-lab/video-stream&envs=API_ID,API_HASH,BOT_TOKEN,BOT_USERNAME,SESSION_NAME,SUDO_USERS,DURATION_LIMIT)
 
+## VPS Deployment
+```sh
+- sudo apt update && upgrade -y
+- sudo apt install python3-pip -y virtualenv
+- sudo apt install ffmpeg -y
+- git clone https://github.com/levina-lab/video-stream
+- cd video-stream
+- virtualenv venv #Create Virtual Environment.
+- source venv/bin/activate #Activate Virtual Environment
+- pip3 install --upgrade pip
+- pip3 install -U -r requirements.txt
+- cp -r sample.env local.env
+- nano local.env #Fill it with your variables value.
+- python3 -m bot
+```
+
 
 # Special Credits 💖
 - [SammyXD](https://github.com/Sammy-XD) Dev
@@ -43,18 +59,3 @@ The easy way to host this bot, deploy to Heroku
 
 ### Support & Updates 🎑
 <a href="https://t.me/VeezSupportGroup"><img src="https://img.shields.io/badge/Join-Group%20Support-blue.svg?style=for-the-badge&logo=Telegram"></a> <a href="https://t.me/levinachannel"><img src="https://img.shields.io/badge/Join-Updates%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
-
-## VPS Deployment
-```sh
-- sudo apt update && upgrade -y
-- sudo apt install python3-pip -y virtualenv
-- sudo apt install ffmpeg -y
-- git clone https://github.com/levina-lab/video-stream
-- cd video-stream
-- virtualenv env #Create Virtual Environment.
-- source env/bin/activate #Activate Virtual Environment
-- pip3 install --upgrade pip
-- pip3 install -U -r requirements.txt
-- sudo nano config.py #Fill it with your variables value.
-- python3 -m bot
-```
