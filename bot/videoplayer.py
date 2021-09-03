@@ -38,7 +38,7 @@ async def stream(client, m: Message):
     else:
         await m.reply("`please reply to a video !`")
 
-@Client.on_message(filters.command("stop"))
+@Client.on_message(filters.command("vstop"))
 @authorized_users_only
 async def stopvideo(client, m: Message):
     chat_id = m.chat.id
