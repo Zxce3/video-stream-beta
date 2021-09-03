@@ -1,4 +1,5 @@
 import os
+from os import getenv
 
 admins = {}
 API_ID = int(os.getenv("API_ID", "6"))
