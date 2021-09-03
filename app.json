@@ -40,7 +40,7 @@
             "required": true
         },
         "DURATION_LIMIT": {
-            "description": "maximum duration limit for downloadable videos",
+            "description": "maximum duration limit for downloadable videos (in minutes)",
             "required": true
         }
     },
