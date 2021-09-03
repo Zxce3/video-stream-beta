@@ -12,12 +12,14 @@ import aiohttp
 import requests
 import wget
 import youtube_dl
+import ffmpeg
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
-from config import DURATION_LIMIT
+from config import DURATION_LIMIT, BOT_USERNAME
+from helper.filters import command
 
 
 @Client.on_message(filters.command("song") & ~filters.channel)
@@ -243,87 +245,64 @@ def time_to_seconds(time):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
-@Client.on_message(filters.command(["vsong", "vsong"]))
-async def ytmusic(client, message: Message):
-    global is_downloading
-    if is_downloading:
-        await message.reply_text(
-            "❗ another download is in progress, try again after sometime."
-        )
-        return
-
-    urlissed = get_text(message)
-
-    pablo = await client.send_message(
-        message.chat.id, f"💡 __Getting {urlissed} from youtube server, please wait...__"
-    )
-    if not urlissed:
-        await pablo.edit("invalid command syntax, please check help menu to know more!")
-        return
-
-    search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
-    mi = search.result()
-    mio = mi["search_result"]
-    mo = mio[0]["link"]
-    thum = mio[0]["title"]
-    fridayz = mio[0]["id"]
-    thums = mio[0]["channel"]
-    kekme = f"https://img.youtube.com/vi/{fridayz}/hqdefault.jpg"
-    await asyncio.sleep(0.6)
-    url = mo
-    sedlyf = wget.download(kekme)
-    opts = {
-        "format": "best",
-        "addmetadata": True,
-        "key": "FFmpegMetadata",
-        "prefer_ffmpeg": True,
-        "geo_bypass": True,
+@Client.on_message(command(["vsong", f"vsong@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
+async def vsong(_, message: Message):
+    query = ''
+    for i in message.command[1:]:
+        query += ' ' + str(i)
+    print(query)
+    k = await message.reply_text("🔎 **searching video...**")
+    ydl_opts = {
+        "format": "best[ext=mp4]",
+        "geo-bypass": True,
         "nocheckcertificate": True,
-        "postprocessors": [{"key": "FFmpegVideoConvertor", "preferedformat": "mp4"}],
-        "outtmpl": "%(id)s.mp4",
-        "logtostderr": False,
-        "quiet": True,
-    }
+        "outtmpl": "downloads/%(id)s.%(ext)s",
+        }
     try:
-        is_downloading = True
-        with youtube_dl.YoutubeDL(opts) as ytdl:
-            infoo = ytdl.extract_info(url, False)
-            duration = round(infoo["duration"] / 60)
-
-            if duration > DURATION_LIMIT:
-                await pablo.edit(
-                    f"❌ Videos longer than {DURATION_LIMIT} minute(s) aren't allowed, the provided video is {duration} minute(s)"
-                )
-                is_downloading = False
-                return
-            ytdl_data = ytdl.extract_info(url, download=True)
-
-    except Exception:
-        # await pablo.edit(event, f"**Failed To Download** \n**Error :** `{str(e)}`")
-        is_downloading = False
+        results = []
+        count = 0
+        while len(results) == 0 and count < 6:
+            if count > 0:
+                await time.sleep(1)
+            results = YoutubeSearch(query, max_results=1).to_dict()
+            count += 1
+        try:
+            link = f"https://youtube.com{results[0]['url_suffix']}"
+            # print(results)
+            title = results[0]["title"]
+            thumbnail = results[0]["thumbnails"][0]
+            duration = int(float(results[0]["duration"]))
+            views = results[0]["views"]
+            thumb_name = f'thumb{message.message_id}.jpg'
+            thumb = requests.get(thumbnail, allow_redirects=True)
+            open(thumb_name, 'wb').write(thumb.content)
+        except Exception as e:
+            print(e)
+            await k.edit('❌ **video not found, please give a valid video name.\n\n» if you think this is an error report to @VeezSupportGroup**')
+            return
+    except Exception as e:
+        await k.edit(
+            "💡 **please give a video name too you want to download.**\n\n» for example: `/vsong runaway`"
+        )
+        print(str(e))
         return
-
-    c_time = time.time()
-    file_stark = f"{ytdl_data['id']}.mp4"
-    capy = f"✨ **video name :** __{thum}__ \n💭 **request by:** __{urlissed}__ \n📣 **channel :** __{thums}__ \n📌 **link :** [click here]({mo})"
-    await client.send_video(
-        message.chat.id,
-        video=open(file_stark, "rb"),
-        duration=int(ytdl_data["duration"]),
-        file_name=str(ytdl_data["title"]),
-        thumb=sedlyf,
-        caption=capy,
-        supports_streaming=True,
-        progress=progress,
-        progress_args=(
-            pablo,
-            c_time,
-            f"📤 **Uploading {urlissed} song from youtube music!**",
-            file_stark,
-        ),
-    )
-    await pablo.delete()
-    is_downloading = False
-    for files in (sedlyf, file_stark):
-        if files and os.path.exists(files):
-            os.remove(files)
+    await k.edit("📥 **downloading file...**")
+    try:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            info_dict = ydl.extract_info(link, download=False)
+            video_file = ydl.prepare_filename(info_dict)
+            ydl.process_info(info_dict)
+        caption = f"🏷 Name: {title}\n💡 Views: {views}\n🎧 Request by: {message.from_user.mention()}\n\n⚡ __Powered by Veez Project Team__"
+        buttons = InlineKeyboardMarkup([[InlineKeyboardButton("🗑 Close", callback_data="cls")]])
+        await k.edit("📤 **uploading file...**")
+        await message.reply_video(video_file, caption=caption, duration=duration, thumb=thumb_name, reply_markup=buttons, supports_streaming=True)
+        await k.delete()
+    except Exception as e:
+        await k.edit(f'❌ **something went wrong !** \n`{e}`')
+        pass
+    try:
+        os.remove(video_file)
+        os.remove(thumb_name)
+    except Exception as e:
+        print(e)
+        pass
