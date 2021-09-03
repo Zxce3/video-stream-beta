@@ -10,8 +10,10 @@ async def cbguide(_, query: CallbackQuery):
 2.) then promote me as admin and give all permissions except anonymous admin.
 3.) add @tg_video_stream to your group.
 4.) turn on the voice chat first before start to stream video.
-5.) type /stream (reply to video) to start streaming.
-6.) type /stop to end the video streaming.
+5.) type /vstream (reply to video) to start streaming.
+6.) type /vstop to end the video streaming.
+7.) type /song (song name) to download song.
+8.) type /vsong (video name) to download video
 
 📝 **note: stream & stop command can only be executed by group admin only!**
 
