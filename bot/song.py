@@ -19,7 +19,7 @@ from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 from config import DURATION_LIMIT, BOT_USERNAME
-from helper.filters import command
+from helpers.filters import command
 
 
 @Client.on_message(filters.command("song") & ~filters.channel)
