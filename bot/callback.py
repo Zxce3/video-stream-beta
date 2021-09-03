@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
+from config import ASSISTANT_NAME as bn
 
 @Client.on_callback_query(filters.regex("cbguide"))
 async def cbguide(_, query: CallbackQuery):
@@ -8,12 +9,10 @@ async def cbguide(_, query: CallbackQuery):
 
 1.) first, add me to your group.
 2.) then promote me as admin and give all permissions except anonymous admin.
-3.) add @tg_video_stream to your group.
+3.) add @{bn} to your group.
 4.) turn on the voice chat first before start to stream video.
 5.) type /vstream (reply to video) to start streaming.
 6.) type /vstop to end the video streaming.
-7.) type /song (song name) to download song.
-8.) type /vsong (video name) to download video
 
 📝 **note: stream & stop command can only be executed by group admin only!**
 
@@ -37,12 +36,15 @@ async def cbstart(_, query: CallbackQuery):
                              "🌐 Terms & Condition", callback_data="cbinfo")
                        ],[
                           InlineKeyboardButton(
+                             "📚 Command List", callback_data="cblist")
+                       ],[
+                          InlineKeyboardButton(
                              "👩🏻‍💻 Developer", url="https://t.me/dlwrml")
                        ],[
                           InlineKeyboardButton(
-                             "💭 Group", url="https://t.me/VeezSupportGroup"),
+                             "💬 Group", url="https://t.me/VeezSupportGroup"),
                           InlineKeyboardButton(
-                             "✨ Channel", url="https://t.me/levinachannel")
+                             "🎑 Channel", url="https://t.me/levinachannel")
                        ]]
                     ))
 
