@@ -30,6 +30,10 @@
         "SUDO_USERS": {
             "description": "list of user ids to be added to sudo member list",
             "required": true
+        },
+        "DURATION_LIMIT": {
+            "description": "maximum duration limit for downloadable videos",
+            "required": true
         }
     },
     "addons": [],
