@@ -23,6 +23,10 @@
             "description": "your bot token from @botfather",
             "required": true
         },
+        "BOT_USERNAME": {
+            "description": "your bot username from @botfather",
+            "required": true
+        },
         "SESSION_NAME": {
             "description": "fill with the pyrogram String Session",
             "required": true
