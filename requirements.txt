@@ -1,4 +1,4 @@
-TgCrypto==1.2.2
+TgCrypto
 ffmpeg-python
 future
 git+https://github.com/pyrogram/pyrogram@master
