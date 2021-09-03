@@ -15,9 +15,12 @@ telegram bot project for streaming video on telegram video chat, powered by [tgc
 </p>
 
 ## 🛠 Commands:
-- /stream (reply to video) - to start video streaming
-- /stop - to stop video streaming
+- /vstream (reply to video) - to start video streaming
+- /vstop - to stop video streaming
+- /song (song name) - to download song
+- /vsong (video name) - to download video
 
+📝 note: from now, stream & stop command can only be used by group admins.
 
 ## 🧪 Get STRING_SESSION from below:
 
