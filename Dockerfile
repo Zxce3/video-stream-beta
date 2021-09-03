@@ -1,8 +1,8 @@
-FROM python:3.9
+FROM python:latest
 
-RUN apt update && apt upgrade -y
-RUN apt install python3-pip -y
-RUN apt install ffmpeg -y
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install python3-pip -y
+RUN apt-get install ffmpeg -y
 
 COPY . /py
 WORKDIR /py
