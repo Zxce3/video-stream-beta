@@ -42,7 +42,7 @@ async def stream(client, m: Message):
         	except Exception as e:
         		await msg.edit(f"**Error** -- `{e}`")
         else:
-        	await m.reply(f"🔺**how can i play {mime} ?, ***please reply to a video or video file** ")
+        	await m.reply(f"🔺**how can i play {mime} ?, please reply to a video or video file** ")
     else:
         await m.reply("🔺 **please reply to a video or video file!**")
 
