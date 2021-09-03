@@ -12,3 +12,4 @@ aiofiles
 youtube_dl
 youtube_search_python
 youtube_search
+python-dotenv
