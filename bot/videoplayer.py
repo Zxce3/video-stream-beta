@@ -4,6 +4,7 @@ from pytgcalls import GroupCallFactory
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from config import API_ID, API_HASH, SESSION_NAME
+from helpers.decorators import authorized_users_only
 
 app = Client(SESSION_NAME, API_ID, API_HASH)
 group_call_factory = GroupCallFactory(app, GroupCallFactory.MTPROTO_CLIENT_TYPE.PYROGRAM)
@@ -11,6 +12,7 @@ VIDEO_CALL = {}
 
 
 @Client.on_message(filters.command("stream"))
+@authorized_users_only
 async def stream(client, m: Message):
     replied = m.reply_to_message
     if not replied:
@@ -46,6 +48,7 @@ async def stream(client, m: Message):
         await m.reply("🔺 **please reply to a video or live stream url to stream video!**")
 
 @Client.on_message(filters.command("stop"))
+@authorized_users_only
 async def stopvideo(client, m: Message):
     chat_id = m.chat.id
     try:
