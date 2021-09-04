@@ -32,7 +32,7 @@ The easy way to host this bot, deploy to Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/levina-lab/video-stream)
 
 # Railway Deployment 🚄
-[![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/levina-lab/video-stream&envs=API_ID,API_HASH,BOT_TOKEN,BOT_USERNAME,ASSISTANT_NAME,SESSION_NAME,SUDO_USERS,DURATION_LIMIT,CHAT_ID)
+[![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/levina-lab/video-stream&envs=API_ID,API_HASH,BOT_TOKEN,BOT_USERNAME,ASSISTANT_NAME,SESSION_NAME,SUDO_USERS,DURATION_LIMIT)
 
 ## VPS Deployment
 ```sh
