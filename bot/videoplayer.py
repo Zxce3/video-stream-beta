@@ -31,7 +31,7 @@ ydl = YoutubeDL(ydl_opts)
 
 @Client.on_message(command(["vstream", f"vstream@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
-async def stream(client, m: Message):
+async def vstream(client, m: Message):
     if 1 in STREAM:
         await m.reply_text("😕 **sorry, there's another video streaming right now**\n\n» **wait for it to finish then try again!**")
         return
@@ -135,7 +135,7 @@ async def stream(client, m: Message):
 
 @Client.on_message(command(["vstop", f"vstop@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
-async def endstream(client, m: Message):
+async def vstop(client, m: Message):
     if 0 in STREAM:
         await m.reply_text("😕 **no active streaming at this time**\n\n» start streaming by using /vstream command (reply to video)")
         return
