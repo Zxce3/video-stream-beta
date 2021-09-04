@@ -18,7 +18,7 @@ from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, Chat, CallbackQuery
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
-from config import DURATION_LIMIT, BOT_USERNAME
+from config import DURATION_LIMIT, BOT_USERNAME as bn
 from helpers.filters import command
 
 
@@ -33,7 +33,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    m = message.reply("🔎 Finding song...")
+    m = message.reply("🔎 finding song...")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -53,13 +53,13 @@ def song(client, message):
         m.edit("❌ song not found.\n\nplease give a valid song name.")
         print(str(e))
         return
-    m.edit("📥 Downloading...")
+    m.edit("📥 downloading...")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = "**🎧 By @veezvidstreambot**"
+        rep = f"**🎧 By @{bn}**"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(dur_arr[i]) * secmul
@@ -83,6 +83,7 @@ def song(client, message):
     except Exception as e:
         print(e)
 
+        
 def get_text(message: Message) -> [None, str]:
     text_to_return = message.text
     if message.text is None:
@@ -292,7 +293,7 @@ async def vsong(_, message: Message):
             info_dict = ydl.extract_info(link, download=False)
             video_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        caption = f"🏷 Name: {title}\n💡 Views: {views}\n🎧 Request by: {message.from_user.mention()}\n\n⚡ __Powered by Veez Project Team__"
+        caption = f"🏷 Name: {title}\n💡 Views: `{views}`\n🎧 Request by: {message.from_user.mention()}\n\n⚡ __Powered by Veez Project Team__"
         buttons = InlineKeyboardMarkup([[InlineKeyboardButton("🗑 Close", callback_data="cls")]])
         await k.edit("📤 **uploading file...**")
         await message.reply_video(video_file, caption=caption, duration=duration, thumb=thumb_name, reply_markup=buttons, supports_streaming=True)
