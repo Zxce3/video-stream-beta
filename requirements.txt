@@ -2,7 +2,7 @@ TgCrypto
 ffmpeg-python
 future
 git+https://github.com/pyrogram/pyrogram@master
-pytgcalls==3.0.0.dev10
+pytgcalls==3.0.0.dev12
 wget
 tswift
 asyncio
@@ -10,7 +10,7 @@ requests
 aiohttp
 aiofiles
 youtube_dl
-youtube_search_python
+youtube_search_python==1.4.5
 youtube_search
 python-dotenv
 psutil
