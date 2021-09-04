@@ -95,6 +95,13 @@ async def cblist(_, query: CallbackQuery):
 » /truth - check it by yourself
 » /dare - check it by yourself
 
+🔰 EXTRA CMD:
+
+» /alive - check bot alive status
+» /ping - check bot ping status
+» /uptime - check bot uptime status
+» /sysinfo - check bot system information
+
 ⚡ __Maintained by Veez Project Team__""",
     reply_markup=InlineKeyboardMarkup(
       [[
