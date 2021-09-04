@@ -6,7 +6,7 @@ from asyncio import sleep
 from pytgcalls import GroupCallFactory
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from config import API_ID, API_HASH, SESSION_NAME, BOT_USERNAME
+from config import API_ID, API_HASH, SESSION_NAME, BOT_USERNAME, CHAT_ID
 from helpers.decorators import authorized_users_only
 from helpers.filters import command
 
