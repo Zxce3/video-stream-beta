@@ -15,7 +15,7 @@ import youtube_dl
 import ffmpeg
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
-from pyrogram.types import Message
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, Chat, CallbackQuery
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 from config import DURATION_LIMIT, BOT_USERNAME
