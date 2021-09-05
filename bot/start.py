@@ -29,9 +29,9 @@ async def _human_time_duration(seconds):
     return ', '.join(parts)
 
 
-@Client.on_message(filters.command("start"))
-async def start(client, m: Message):
-   if m.chat.type == 'private':
+@Client.on_message(command(["start", f"start@{BOT_USERNAME}"]))
+async def start(_, m: Message):
+   if m.chat.type == "private":
       await m.reply(f"✨ **Hello there, I am a telegram video streaming bot.**\n\n💭 **I was created to stream videos in group video chats easily.**\n\n❔ **To find out how to use me, please press the help button below** 👇🏻",
                     reply_markup=InlineKeyboardMarkup(
                        [[
@@ -71,11 +71,11 @@ async def start(client, m: Message):
 
 
 @Client.on_message(command(["alive", f"alive@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
-async def alive(client: Client, message: Message):
+async def alive(_, m: Message):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
-    await message.reply_text(
+    await m.reply_text(
         f"""✅ **bot is running**\n<b>💠 **uptime:**</b> `{uptime}`""",
         reply_markup=InlineKeyboardMarkup(
             [
@@ -93,9 +93,9 @@ async def alive(client: Client, message: Message):
 
 
 @Client.on_message(command(["ping", f"ping@{BOT_USERNAME}"]) & ~filters.edited)
-async def ping_pong(client: Client, message: Message):
+async def ping_pong(_, m: Message):
     start = time()
-    m_reply = await message.reply_text("pinging...")
+    m_reply = await m.reply_text("pinging...")
     delta_ping = time() - start
     await m_reply.edit_text(
         "🏓 `PONG!!`\n"
@@ -105,11 +105,11 @@ async def ping_pong(client: Client, message: Message):
 
 @Client.on_message(command(["uptime", f"uptime@{BOT_USERNAME}"]) & ~filters.edited)
 @sudo_users_only
-async def get_uptime(client: Client, message: Message):
+async def get_uptime(_, message: Message):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
-    await message.reply_text(
+    await m.reply_text(
         "🤖 bot status:\n"
         f"• **uptime:** `{uptime}`\n"
         f"• **start time:** `{START_TIME_ISO}`"
