@@ -128,9 +128,9 @@ async def vstream(client, m: Message):
 @Client.on_message(command(["vstop", f"vstop@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
 async def vstop(client, m: Message):
+    chat_id = m.chat.id
     if 0 in STREAM:
         await m.reply_text("😕 **no active streaming at this time**\n\n» start streaming by using /vstream command (reply to video/yt url/live url)")
-        chat_id = m.chat.id
         return
     try:
         await VIDEO_CALL[chat_id].stop()
