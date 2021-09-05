@@ -16,7 +16,7 @@ from helpers.decorators import authorized_users_only
 from helpers.filters import command
 
 
-STREAM = {10}
+STREAM = {8}
 VIDEO_CALL = {}
 
 
@@ -36,7 +36,7 @@ group_call_factory = GroupCallFactory(app, GroupCallFactory.MTPROTO_CLIENT_TYPE.
 
 @Client.on_message(command(["vstream", f"vstream@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 async def vstream(client, m: Message):
-    if 10 in STREAM:
+    if 1 in STREAM:
         await m.reply_text("😕 **sorry, there's another video streaming right now**\n\n» **wait for it to finish then try again!**")
         return
 
