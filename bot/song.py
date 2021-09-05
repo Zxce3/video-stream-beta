@@ -22,7 +22,7 @@ from config import DURATION_LIMIT, BOT_USERNAME
 from helpers.filters import command
 
 
-@Client.on_message(filters.command("song") & ~filters.channel)
+@Client.on_message(command(["song", f"song@{BOT_USERNAME}"]) & ~filters.channel)
 def song(client, message):
 
     user_id = message.from_user.id
