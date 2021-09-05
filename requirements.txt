@@ -1,4 +1,4 @@
-TgCrypto
+tgcrypto
 ffmpeg-python
 future
 git+https://github.com/pyrogram/pyrogram@master
@@ -12,7 +12,7 @@ requests
 aiohttp
 aiofiles
 youtube_dl
-youtube_search_python==1.4.5
+youtube_search_python==1.4.6
 youtube_search
 python-dotenv
 psutil
