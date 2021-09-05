@@ -1,20 +1,19 @@
 import platform
+import psutil
 import re
 import socket
 import sys
-import time
 import uuid
-from datetime import datetime
-from os import environ, execle, path, remove
-from helpers.decorators import humanbytes
-
-import psutil
-from pyrogram import  Client, filters, __version__
+from pyrogram import Client, filters
+from config import BOT_USERNAME
+from helpers.filters import command
+from helpers.decorators import sudo_users_only, humanbytes
 
 
 # FETCH SYSINFO
 
-@Client.on_message(filters.command('sysinfo'))
+@Client.on_message(command(["sysinfo", f"sysinfo@{BOT_USERNAME}"]) & ~filters.edited)
+@sudo_users_only
 async def give_sysinfo(client, message):
     splatform = platform.system()
     platform_release = platform.release()
