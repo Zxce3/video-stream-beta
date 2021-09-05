@@ -60,7 +60,7 @@ async def vstream(_, m: Message):
                 chat_id = m.chat.id
                 group_call = group_call_factory.get_group_call()
                 await group_call.join(chat_id)
-                await group_call.start_video(ytstream)
+                await group_call.start_video(ytstream, repeat=False)
                 VIDEO_CALL[chat_id] = group_call
                 await msg.edit((f"💡 **started [youtube streaming]({ytstream}) !\n\n» join to video chat to watch the youtube stream.**"), disable_web_page_preview=True)
                 try:
@@ -81,7 +81,7 @@ async def vstream(_, m: Message):
             try:
                 group_call = group_call_factory.get_group_call()
                 await group_call.join(chat_id)
-                await group_call.start_video(livestream)
+                await group_call.start_video(livestream, repeat=False)
                 VIDEO_CALL[chat_id] = group_call
                 await msg.edit((f"💡 **started [live streaming]({livestream}) !\n\n» join to video chat to watch the live stream.**"), disable_web_page_preview=True)
                 try:
@@ -103,7 +103,7 @@ async def vstream(_, m: Message):
         try:
             group_call = group_call_factory.get_group_call()
             await group_call.join(chat_id)
-            await group_call.start_video(video)
+            await group_call.start_video(video, repeat=False)
             VIDEO_CALL[chat_id] = group_call
             await msg.edit("💡 **video streaming started!**\n\n» **join to video chat to watch the video.**")
             try:
