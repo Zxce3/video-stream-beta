@@ -35,8 +35,7 @@ group_call_factory = GroupCallFactory(app, GroupCallFactory.MTPROTO_CLIENT_TYPE.
 
 
 @Client.on_message(command(["vstream", f"vstream@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
-async def stream(client, m: Message):
-    chat_id = m.chat_id
+async def vstream(client, m: Message):
     if 1 in STREAM:
         await m.reply_text("😕 **sorry, there's another video streaming right now**\n\n» **wait for it to finish then try again!**")
         return
@@ -59,6 +58,7 @@ async def stream(client, m: Message):
                 ytvid = path.join("downloads", f"{info['id']}.{info['ext']}")
             except Exception as e:
                 await msg.edit(f"❌ **youtube downloader error!** \n\n`{e}`")
+                chat_id = m.chat.id
                 return
             await sleep(2)
             try:
@@ -100,7 +100,7 @@ async def stream(client, m: Message):
                 await msg.edit(f"❌ **something went wrong!** \n\nError: `{e}`")
 
     elif media.video or media.document:
-        msg = await m.reply_text("🔄 `Downloading ...`")
+        msg = await m.reply_text("📥 **downloading video...**\n\n💭 __this process will take quite a while depending on the size of the video.__")
         video = await client.download_media(media)
         chat_id = m.chat_id
         await sleep(2)
@@ -127,10 +127,10 @@ async def stream(client, m: Message):
 
 @Client.on_message(command(["vstop", f"vstop@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
-async def stopvideo(client, m: Message):
-    chat_id = m.chat_id
+async def vstop(client, m: Message):
     if 0 in STREAM:
         await m.reply_text("😕 **no active streaming at this time**\n\n» start streaming by using /vstream command (reply to video/yt url/live url)")
+        chat_id = m.chat_id
         return
     try:
         await VIDEO_CALL[chat_id].stop()
