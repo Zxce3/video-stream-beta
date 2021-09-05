@@ -1,16 +1,10 @@
-import os
 import re
-import time
-import ffmpeg
-import asyncio
 from os import path
 from asyncio import sleep
 from youtube_dl import YoutubeDL
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from pyrogram.errors import FloodWait
 from pytgcalls import GroupCallFactory
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from config import API_ID, API_HASH, SESSION_NAME, BOT_USERNAME
 from helpers.decorators import authorized_users_only
 from helpers.filters import command
@@ -19,37 +13,41 @@ from helpers.filters import command
 STREAM = {8}
 VIDEO_CALL = {}
 
-
 ydl_opts = {
         "format": "best",
         "addmetadata": True,
-        "geo_bypass": True,
+        "geo-bypass": True,
         "nocheckcertificate": True,
         "videoformat": "mp4",
         "outtmpl": "downloads/%(id)s.%(ext)s",
 }
 ydl = YoutubeDL(ydl_opts)
 
-app = Client(SESSION_NAME, API_ID, API_HASH)
+
+app = Client(
+    SESSION_NAME,
+    api_id=API_ID,
+    api_hash=API_HASH,
+)
 group_call_factory = GroupCallFactory(app, GroupCallFactory.MTPROTO_CLIENT_TYPE.PYROGRAM)
 
 
 @Client.on_message(command(["vstream", f"vstream@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
-async def vstream(client, m: Message):
+async def vstream(_, m: Message):
     if 1 in STREAM:
         await m.reply_text("😕 **sorry, there's another video streaming right now**\n\n» **wait for it to finish then try again!**")
         return
 
     media = m.reply_to_message
     if not media and not ' ' in m.text:
-        await m.reply("🔺 **please reply to a video or live stream url or youtube url to stream the video!**")
+        await m.reply_text("🔺 **please reply to a video or live stream url or youtube url to stream the video!**")
 
     elif ' ' in m.text:
         msg = await m.reply_text("🔄 **processing youtube url...**")
         text = m.text.split(' ', 1)
         url = text[1]
         regex = r"^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+"
-        match = re.match(regex,url)
+        match = re.match(regex, url)
         if match:
             await msg.edit("🔄 **starting youtube streaming...**")
             try:
@@ -97,11 +95,11 @@ async def vstream(client, m: Message):
                 except:
                     pass
             except Exception as e:
-                await msg.edit(f"❌ **something went wrong!** \n\nError: `{e}`")
+                await msg.edit(f"❌ **something went wrong!** \n\nerror: `{e}`")
 
     elif media.video or media.document:
         msg = await m.reply_text("📥 **downloading video...**\n\n💭 __this process will take quite a while depending on the size of the video.__")
-        video = await client.download_media(media)
+        video = await media.download()
         chat_id = m.chat.id
         await sleep(2)
         try:
@@ -119,15 +117,15 @@ async def vstream(client, m: Message):
             except:
                 pass
         except Exception as e:
-            await msg.edit(f"❌ **something went wrong!** \n\nError: `{e}`")
+            await msg.edit(f"❌ **something went wrong!** \n\nerror: `{e}`")
     else:
-        await m.reply_text("🔺 **please reply to a video or live stream url or youtube url to stream the video!**")
+        await msg.edit("🔺 **please reply to a video or live stream url or youtube url to stream the video!**")
         return
 
 
 @Client.on_message(command(["vstop", f"vstop@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
-async def vstop(client, m: Message):
+async def vstop(_, m: Message):
     chat_id = m.chat.id
     if 0 in STREAM:
         await m.reply_text("😕 **no active streaming at this time**\n\n» start streaming by using /vstream command (reply to video/yt url/live url)")
@@ -144,4 +142,4 @@ async def vstop(client, m: Message):
         except:
             pass
     except Exception as e:
-        await m.reply_text(f"❌ **something went wrong!** \n\nError: `{e}`")
+        await m.reply_text(f"❌ **something went wrong!** \n\nerror: `{e}`")
