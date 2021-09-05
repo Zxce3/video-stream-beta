@@ -62,9 +62,12 @@ async def cbinfo(_, query: CallbackQuery):
 
 👨🏻‍💻 __Thanks to the developers who participated in the development of this bot, the list of devs can be seen below:__
 
-👩🏻‍✈️ » [Levina](https://github.com/levina-lab)
+👩🏻‍✈️ » [Levina Shavila](https://github.com/levina-lab)
 🤵🏻 » [Sammy-XD](https://github.com/Sammy-XD)
-👩🏻‍✈️ » [Achu](https://github.com/Achu2234)
+👩🏻‍✈️ » [Achu Biju](https://github.com/Achu2234)
+🤵🏻 » [Mr.Zxce3](https://github.com/Zxce3)
+🤵🏻 » [Tofik Denianto](https://github.com/tofikdn)
+🤵🏻 » [Shohih Abdul](https://github.com/DoellBarr)
 
 __This bot licensed under GNU-GPL 3.0 License__""",
     reply_markup=InlineKeyboardMarkup(
@@ -97,6 +100,7 @@ async def cblist(_, query: CallbackQuery):
 
 🔰 EXTRA CMD:
 
+» /tts (reply to text) - text to speech
 » /alive - check bot alive status
 » /ping - check bot ping status
 » /uptime - check bot uptime status
