@@ -66,7 +66,7 @@ async def vstream(client, m: Message):
                 await group_call.join(chat_id)
                 await group_call.start_video(ytvid)
                 VIDEO_CALL[chat_id] = group_call
-                await msg.edit(f"💡 **started [youtube streaming]({url}) !\n\n» join to video chat to watch the youtube stream.**")
+                await msg.edit((f"💡 **started [youtube streaming]({url}) !\n\n» join to video chat to watch the youtube stream.**"), disable_web_page_preview=True)
                 try:
                     STREAM.remove(0)
                 except:
@@ -87,7 +87,7 @@ async def vstream(client, m: Message):
                 await group_call.join(chat_id)
                 await group_call.start_video(live)
                 VIDEO_CALL[chat_id] = group_call
-                await msg.edit(f"💡 **started [live streaming]({live}) !\n\n» join to video chat to watch the live stream.**")
+                await msg.edit((f"💡 **started [live streaming]({live}) !\n\n» join to video chat to watch the live stream.**"), disable_web_page_preview=True)
                 try:
                     STREAM.remove(0)
                 except:
