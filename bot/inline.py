@@ -42,7 +42,7 @@ async def inline(client: Client, query: InlineQuery):
                         result["duration"], result["viewCount"]["short"]
                     ),
                     input_message_content=InputTextMessageContent(
-                        "https://www.youtube.com/watch?v={}".format(result["id"])
+                        "/vstream https://www.youtube.com/watch?v={}".format(result["id"])
                     ),
                     thumb_url=result["thumbnails"][0]["url"],
                 )
