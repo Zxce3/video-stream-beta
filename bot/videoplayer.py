@@ -80,7 +80,7 @@ async def vstream(client, m: Message):
         else:
             await msg.edit("🔄 **starting live streaming...**")
             live = url
-            chat_id = m.chat_id
+            chat_id = m.chat.id
             await sleep(2)
             try:
                 group_call = group_call_factory.get_group_call()
@@ -102,7 +102,7 @@ async def vstream(client, m: Message):
     elif media.video or media.document:
         msg = await m.reply_text("📥 **downloading video...**\n\n💭 __this process will take quite a while depending on the size of the video.__")
         video = await client.download_media(media)
-        chat_id = m.chat_id
+        chat_id = m.chat.id
         await sleep(2)
         try:
             group_call = group_call_factory.get_group_call()
@@ -130,7 +130,7 @@ async def vstream(client, m: Message):
 async def vstop(client, m: Message):
     if 0 in STREAM:
         await m.reply_text("😕 **no active streaming at this time**\n\n» start streaming by using /vstream command (reply to video/yt url/live url)")
-        chat_id = m.chat_id
+        chat_id = m.chat.id
         return
     try:
         await VIDEO_CALL[chat_id].stop()
