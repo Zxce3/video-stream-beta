@@ -8,7 +8,7 @@ from io import BytesIO
 
 from googletrans import Translator
 from gtts import gTTS
-from pyrogram import filters
+from pyrogram import filters, Client
 from pyrogram.types import Message
 
 from bot.videoplayer import app
