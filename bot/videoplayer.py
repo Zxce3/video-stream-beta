@@ -58,10 +58,10 @@ async def vstream(client, m: Message):
                 ytvid = path.join("downloads", f"{info['id']}.{info['ext']}")
             except Exception as e:
                 await msg.edit(f"❌ **youtube downloader error!** \n\n`{e}`")
-                chat_id = m.chat.id
                 return
             await sleep(2)
             try:
+                chat_id = m.chat.id
                 group_call = group_call_factory.get_group_call()
                 await group_call.join(chat_id)
                 await group_call.start_video(ytvid)
