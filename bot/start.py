@@ -61,7 +61,7 @@ async def start(client, m: Message):
                              "❔ HOW TO USE THIS BOT", callback_data="cbguide")
                        ],[
                           InlineKeyboardButton(
-                             "🌐 Search Youtube", switch_inline_query='s ')
+                             "🌐 Search Youtube", switch_inline_query='')
                        ],[
                           InlineKeyboardButton(
                              "📚 Command List", callback_data="cblist")
