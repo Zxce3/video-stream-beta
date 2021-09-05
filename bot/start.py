@@ -105,7 +105,7 @@ async def ping_pong(_, m: Message):
 
 @Client.on_message(command(["uptime", f"uptime@{BOT_USERNAME}"]) & ~filters.edited)
 @sudo_users_only
-async def get_uptime(_, message: Message):
+async def get_uptime(_, m: Message):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
