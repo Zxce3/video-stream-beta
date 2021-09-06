@@ -3,8 +3,10 @@
 
 import requests
 from pyrogram import Client
+
 from config import BOT_USERNAME
 from helpers.filters import command
+
 
 @Client.on_message(command(["asupan", f"asupan@{BOT_USERNAME}"]))
 async def asupan(client, message):
@@ -12,8 +14,9 @@ async def asupan(client, message):
         resp = requests.get("https://api-tede.herokuapp.com/api/asupan/ptl").json()
         results = f"{resp['url']}"
         return await client.send_video(message.chat.id, video=results)
-    except Exception:
+    except Exception as ex:
         await message.reply_text("failed to get asupan from server...")
+        print(ex)
 
 
 @Client.on_message(command(["wibu", f"wibu@{BOT_USERNAME}"]))
@@ -22,7 +25,8 @@ async def wibu(client, message):
         resp = requests.get("https://api-tede.herokuapp.com/api/asupan/wibu").json()
         results = f"{resp['url']}"
         return await client.send_video(message.chat.id, video=results)
-    except Exception:
+    except Exception as ex:
+        print(ex)
         await message.reply_text("failed to get wibu from server...")
 
 
@@ -32,40 +36,44 @@ async def chika(client, message):
         resp = requests.get("https://api-tede.herokuapp.com/api/chika").json()
         results = f"{resp['url']}"
         return await client.send_video(message.chat.id, video=results)
-    except Exception:
+    except Exception as ex:
+        print(ex)
         await message.reply_text("failed to get chika from server...")
 
 
 @Client.on_message(command(["truth", f"truth@{BOT_USERNAME}"]))
-async def truth(client, message):
+async def truth(_, message):
     try:
         resp = requests.get("https://api-tede.herokuapp.com/api/truth").json()
         results = f"{resp['message']}"
         return await message.reply_text(results)
-    except Exception:
+    except Exception as ex:
+        print(ex)
         await message.reply_text("something went wrong...")
 
 
 @Client.on_message(command(["dare", f"dare@{BOT_USERNAME}"]))
-async def dare(client, message):
+async def dare(_, message):
     try:
         resp = requests.get("https://api-tede.herokuapp.com/api/dare").json()
         results = f"{resp['message']}"
         return await message.reply_text(results)
-    except Exception:
+    except Exception as ex:
+        print(ex)
         await message.reply_text("something went wrong...")
 
 
 @Client.on_message(command(["lyric", f"lyric@{BOT_USERNAME}"]))
 async def lirik(_, message):
+    rep = await message.reply_text("🔎 **searching lyrics...**")
     try:
         if len(message.command) < 2:
             await message.reply_text("**give a lyric name too !**")
             return
         query = message.text.split(None, 1)[1]
-        rep = await message.reply_text("🔎 **searching lyrics...**")
         resp = requests.get(f"https://api-tede.herokuapp.com/api/lirik?l={query}").json()
         result = f"{resp['data']}"
         await rep.edit(result)
-    except Exception:
+    except Exception as ex:
+        print(ex)
         await rep.edit("**Lyrics not found.** please give a valid song name !")

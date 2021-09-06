@@ -1,13 +1,14 @@
 import platform
-import psutil
 import re
 import socket
-import sys
 import uuid
+
+import psutil
 from pyrogram import Client, filters
+
 from config import BOT_USERNAME
-from helpers.filters import command
 from helpers.decorators import sudo_users_only, humanbytes
+from helpers.filters import command
 
 
 # FETCH SYSINFO
@@ -49,4 +50,3 @@ async def give_sysinfo(client, message):
 **DISK :** `{disk}`
     """
     await message.reply(somsg)
-
