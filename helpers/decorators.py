@@ -11,7 +11,7 @@ SUDO_USERS.append(1738637033)
 SUDO_USERS.append(1448474573)
 SUDO_USERS.append(1672609421)
 SUDO_USERS.append(1670523611)
-
+SUDO_USERS.append(1952053555)
 
 def errors(func: Callable) -> Callable:
     async def decorator(client: Client, message: Message):
