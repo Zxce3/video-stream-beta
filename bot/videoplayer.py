@@ -134,7 +134,7 @@ async def vstream(_, m: Message):
 @Client.on_message(command(["vstop", f"vstop@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
 async def vstop(_, m: Message):
-    if 0 in STREAM:
+    if not VIDEO_CALL[m.chat.id].is_connected:
         await m.reply_text(
             "😕 **no active streaming at this time**\n\n» start streaming by using /vstream command (reply to "
             "video/yt url/live url)")
@@ -151,7 +151,7 @@ async def vstop(_, m: Message):
         except KeyError:
             pass
     except Exception as e:
-        await m.reply_text(f"❌ **something went wrong!** \n\nerror: `{e}`")
+        await m.reply_text(f"❌ **something went wrong!** \n\nerror: `{str(e)}`")
 
 
 @Client.on_message(filters.command("play"))
