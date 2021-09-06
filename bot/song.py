@@ -10,44 +10,34 @@ from urllib.parse import urlparse
 import aiofiles
 import aiohttp
 import requests
-import wget
 import youtube_dl
-import ffmpeg
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
-from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, Chat, CallbackQuery
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from youtube_search import YoutubeSearch
-from youtubesearchpython import SearchVideos
-from config import DURATION_LIMIT, BOT_USERNAME
+
+from config import BOT_USERNAME
 from helpers.filters import command
+from helpers.decorators import humanbytes
 
 
 @Client.on_message(command(["song", f"song@{BOT_USERNAME}"]) & ~filters.channel)
-def song(client, message):
-
-    user_id = message.from_user.id
-    user_name = message.from_user.first_name
-    rpk = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
-
+def song(_, message):
     query = ""
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
     m = message.reply("🔎 finding song...")
-    ydl_opts = {"format": "bestaudio[ext=m4a]"}
+    ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
-        # print(results)
         title = results[0]["title"][:40]
         thumbnail = results[0]["thumbnails"][0]
         thumb_name = f"thumb{title}.jpg"
         thumb = requests.get(thumbnail, allow_redirects=True)
         open(thumb_name, "wb").write(thumb.content)
-
         duration = results[0]["duration"]
-        results[0]["url_suffix"]
-        results[0]["views"]
 
     except Exception as e:
         m.edit("❌ song not found.\n\nplease give a valid song name.")
@@ -55,7 +45,7 @@ def song(client, message):
         return
     m.edit("📥 downloading...")
     try:
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        with youtube_dl.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
@@ -83,7 +73,7 @@ def song(client, message):
     except Exception as e:
         print(e)
 
-        
+
 def get_text(message: Message) -> [None, str]:
     text_to_return = message.text
     if message.text is None:
@@ -95,18 +85,6 @@ def get_text(message: Message) -> [None, str]:
             return None
     else:
         return None
-
-
-def humanbytes(size):
-    if not size:
-        return ""
-    power = 2 ** 10
-    raised_to_pow = 0
-    dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
-    while size > power:
-        size /= power
-        raised_to_pow += 1
-    return str(round(size, 2)) + " " + dict_power_n[raised_to_pow] + "B"
 
 
 async def progress(current, total, message, start, type_of_ps, file_name=None):
@@ -121,8 +99,8 @@ async def progress(current, total, message, start, type_of_ps, file_name=None):
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
         progress_str = "{0}{1} {2}%\n".format(
-            "".join(["🔴" for i in range(math.floor(percentage / 10))]),
-            "".join(["🔘" for i in range(10 - math.floor(percentage / 10))]),
+            "".join(["🔴" for _ in range(math.floor(percentage / 10))]),
+            "".join(["🔘" for _ in range(10 - math.floor(percentage / 10))]),
             round(percentage, 2),
         )
         tmp = progress_str + "{0} of {1}\nETA: {2}".format(
@@ -165,7 +143,7 @@ def get_user(message: Message, text: str) -> [int, str, None]:
     return user_s, reason_
 
 
-def get_readable_time(seconds: int) -> int:
+def get_readable_time(seconds: int) -> str:
     count = 0
     ping_time = ""
     time_list = []
@@ -199,11 +177,11 @@ def time_formatter(milliseconds: int) -> str:
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
     tmp = (
-        ((str(days) + " day(s), ") if days else "")
-        + ((str(hours) + " hour(s), ") if hours else "")
-        + ((str(minutes) + " minute(s), ") if minutes else "")
-        + ((str(seconds) + " second(s), ") if seconds else "")
-        + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
+            ((str(days) + " day(s), ") if days else "")
+            + ((str(hours) + " hour(s), ") if hours else "")
+            + ((str(minutes) + " minute(s), ") if minutes else "")
+            + ((str(seconds) + " second(s), ") if seconds else "")
+            + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
     )
     return tmp[:-2]
 
@@ -241,8 +219,8 @@ async def download_song(url):
 is_downloading = False
 
 
-def time_to_seconds(time):
-    stringt = str(time)
+def time_to_seconds(times):
+    stringt = str(times)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
@@ -253,18 +231,18 @@ async def vsong(_, message: Message):
         query += ' ' + str(i)
     print(query)
     k = await message.reply_text("🔎 **searching video...**")
-    ydl_opts = {
+    ydl_ops = {
         "format": "best[ext=mp4]",
         "geo-bypass": True,
         "nocheckcertificate": True,
         "outtmpl": "downloads/%(id)s.%(ext)s",
-        }
+    }
     try:
         results = []
         count = 0
         while len(results) == 0 and count < 6:
             if count > 0:
-                await time.sleep(1)
+                await asyncio.sleep(1)
             results = YoutubeSearch(query, max_results=1).to_dict()
             count += 1
         try:
@@ -279,7 +257,9 @@ async def vsong(_, message: Message):
             open(thumb_name, 'wb').write(thumb.content)
         except Exception as e:
             print(e)
-            await k.edit('❌ **video not found, please give a valid video name.\n\n» if you think this is an error report to @VeezSupportGroup**')
+            await k.edit(
+                '❌ **video not found, please give a valid video name.\n\n» if you think this is an error report to '
+                '@VeezSupportGroup**')
             return
     except Exception as e:
         await k.edit(
@@ -289,14 +269,16 @@ async def vsong(_, message: Message):
         return
     await k.edit("📥 **downloading file...**")
     try:
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        with youtube_dl.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             video_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        caption = f"🏷 Name: {title}\n💡 Views: `{views}`\n🎧 Request by: {message.from_user.mention()}\n\n⚡ __Powered by Veez Project Team__"
+        caption = f"🏷 Name: {title}\n💡 Views: `{views}`\n🎧 Request by: {message.from_user.mention()}\n\n⚡ " \
+                  f"__Powered by Veez Project Team__ "
         buttons = InlineKeyboardMarkup([[InlineKeyboardButton("🗑 Close", callback_data="cls")]])
         await k.edit("📤 **uploading file...**")
-        await message.reply_video(video_file, caption=caption, duration=duration, thumb=thumb_name, reply_markup=buttons, supports_streaming=True)
+        await message.reply_video(video_file, caption=caption, duration=duration, thumb=thumb_name,
+                                  reply_markup=buttons, supports_streaming=True)
         await k.delete()
     except Exception as e:
         await k.edit(f'❌ **something went wrong !** \n`{e}`')
