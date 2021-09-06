@@ -11,8 +11,6 @@ from gtts import gTTS
 from pyrogram import filters, Client
 from pyrogram.types import Message
 
-from bot.videoplayer import app
-
 
 def convert(text):
     audio = BytesIO()
@@ -39,6 +37,6 @@ async def text_to_speech(_, message: Message):
         await m.delete()
         audio.close()
     except Exception as e:
-        await m.edit(e)
-        e = traceback.format_exc()
-        print(e)
+        await m.edit(str(e))
+        es = traceback.format_exc()
+        print(es)

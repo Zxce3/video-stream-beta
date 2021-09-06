@@ -1,11 +1,8 @@
 from pyrogram import Client, errors
 from pyrogram.types import (
     InlineQuery,
-    InlineQueryResult,
     InlineQueryResultArticle,
     InputTextMessageContent,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
 )
 from youtubesearchpython import VideosSearch
 
@@ -57,10 +54,14 @@ async def inline(client: Client, query: InlineQuery):
                 switch_pm_text="Error: search timed out",
                 switch_pm_parameter="",
             )
+
+
 # ==================
 # Tested
 
 menus = [
-        InlineQueryResultArticle(title="Start", description="Start a bot", input_message_content=InputTextMessageContent("/start")),
-        InlineQueryResultArticle(title="Info Bot", description="Info about this bot", input_message_content=InputTextMessageContent("/info")),
-    ]
+    InlineQueryResultArticle(title="Start", description="Start a bot",
+                             input_message_content=InputTextMessageContent("/start")),
+    InlineQueryResultArticle(title="Info Bot", description="Info about this bot",
+                             input_message_content=InputTextMessageContent("/info")),
+]
