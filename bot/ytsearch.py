@@ -14,7 +14,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 @app.on_message(command(["search", f"search@{BOT_USERNAME}"]))
 async def ytsearch(_, message: Message):
-    m = await message.reply_text("🔎 **searching...**")
+    m = await message.reply_text("🔎 **searching url...**")
     try:
         if len(message.command) < 2:
             await message.reply_text("/search needs an argument!")
