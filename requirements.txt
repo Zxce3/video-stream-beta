@@ -3,7 +3,7 @@ googletrans==4.0.0rc1
 gTTS==2.2.3
 git+https://github.com/pyrogram/pyrogram@master
 aiofiles==0.7.0
-aiohttp==3.7.4.post0
+aiohttp==3.7.4
 requests==2.26.0
 psutil==5.8.0
 pytgcalls==3.0.0.dev13
