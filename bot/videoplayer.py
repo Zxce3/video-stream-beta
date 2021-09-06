@@ -1,7 +1,9 @@
 import os
 import re
 import pafy
+import time
 import asyncio
+import ffmpeg
 from asyncio import sleep
 
 from pyrogram import Client, filters
@@ -188,7 +190,7 @@ async def stream(client, m: Message):
             	except Exception as e:
             		await msg.edit(f"🚫 **error** - `{e}`")
             else:
-            	msg = await m.reply("🔁 starting live streaming...")
+            	msg = await m.reply("🔁 starting video streaming...")
             	chat_id = m.chat.id
             	await asyncio.sleep(1)
             	try:
