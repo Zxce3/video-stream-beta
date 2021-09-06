@@ -44,7 +44,7 @@ async def chika(client, message):
 @Client.on_message(command(["truth", f"truth@{BOT_USERNAME}"]))
 async def truth(_, message):
     try:
-        resp = requests.get("https://api-tede.herokuapp.com/api/truth").json()
+        resp = requests.get("https://api-tede.herokuapp.com/api/truth-en").json()
         results = f"{resp['message']}"
         return await message.reply_text(results)
     except Exception as ex:
@@ -55,7 +55,7 @@ async def truth(_, message):
 @Client.on_message(command(["dare", f"dare@{BOT_USERNAME}"]))
 async def dare(_, message):
     try:
-        resp = requests.get("https://api-tede.herokuapp.com/api/dare").json()
+        resp = requests.get("https://api-tede.herokuapp.com/api/dare-en").json()
         results = f"{resp['message']}"
         return await message.reply_text(results)
     except Exception as ex:

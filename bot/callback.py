@@ -30,7 +30,7 @@ async def cbguide(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbstart"))
 async def cbstart(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"✨ **Hello there, I am a telegram video streaming bot.**\n\n💭 **I was created to stream videos in group "
+        f"✨ **Hello there, I am a telegram group video streaming bot.**\n\n💭 **I was created to stream videos in group "
         f"video chats easily.**\n\n❔ **To find out how to use me, please press the help button below** 👇🏻",
         reply_markup=InlineKeyboardMarkup(
             [[
@@ -89,8 +89,10 @@ async def cblist(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""📚 All Command List:
 
-» /vstream (reply to video or file) - to stream video
+» /vstream (reply to video or yt url) - to stream video
 » /vstop - end the video streaming
+» /play (reply to video or yt url) - to stream video
+» /end - end the video streaming
 » /song (song name) - download song from YT
 » /vsong (video name) - download video from YT
 » /lyric (song name) - lyric scrapper

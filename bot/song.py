@@ -274,7 +274,7 @@ async def vsong(_, message: Message):
             video_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
         caption = f"🏷 Name: {title}\n💡 Views: `{views}`\n🎧 Request by: {message.from_user.mention()}\n\n⚡ " \
-                  f"__Powered by Veez Project Team__ "
+                  f"__Powered by Veez Music A.I__ "
         buttons = InlineKeyboardMarkup([[InlineKeyboardButton("🗑 Close", callback_data="cls")]])
         await k.edit("📤 **uploading file...**")
         await message.reply_video(video_file, caption=caption, duration=duration, thumb=thumb_name,

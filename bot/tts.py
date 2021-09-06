@@ -1,6 +1,6 @@
 # text to speech funtion
 # ported from juvia group bot / module / tts.py
-
+# Copyright (C) 2021 Veez Project
 
 import traceback
 from asyncio import get_running_loop

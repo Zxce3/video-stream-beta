@@ -1,3 +1,5 @@
+# Copyright (C) 2021 Veez Project
+
 from pyrogram import Client, errors
 from pyrogram.types import (
     InlineQuery,
@@ -24,7 +26,7 @@ async def inline(client: Client, query: InlineQuery):
         await client.answer_inline_query(
             query.id,
             results=answers,
-            switch_pm_text="Search a youtube video",
+            switch_pm_text="search a youtube video",
             switch_pm_parameter="help",
             cache_time=0,
         )
