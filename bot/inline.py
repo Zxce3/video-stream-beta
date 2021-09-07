@@ -37,7 +37,7 @@ async def inline(client: Client, query: InlineQuery):
             answers.append(
                 InlineQueryResultArticle(
                     title=result["title"],
-                    description="{}, {} views.".format(
+                    description="{}, {}.".format(
                         result["duration"], result["viewCount"]["short"]
                     ),
                     input_message_content=InputTextMessageContent(
