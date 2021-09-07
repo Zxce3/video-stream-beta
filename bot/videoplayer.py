@@ -34,7 +34,7 @@ group_call_factory = GroupCallFactory(app, GroupCallFactory.MTPROTO_CLIENT_TYPE.
 
 @Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
-async def stream(client, m: Message):
+async def startvideo(client, m: Message):
     replied = m.reply_to_message
     if not replied:
         if len(m.command) < 2:
