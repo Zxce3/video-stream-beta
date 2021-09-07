@@ -69,7 +69,7 @@ Client Library and Framework in Pure Python for Users and Bots.__
 👩🏻‍✈️ » [Levina Shavila](https://github.com/levina-lab)
 🤵🏻 » [Sammy-XD](https://github.com/Sammy-XD)
 👩🏻‍✈️ » [Achu Biju](https://github.com/Achu2234)
-🤵🏻 » [Mr.Zxce3](https://github.com/Zxce3)
+🤵🏻 » [Zxce3](https://github.com/Zxce3)
 🤵🏻 » [Tofik Denianto](https://github.com/tofikdn)
 🤵🏻 » [Shohih Abdul](https://github.com/DoellBarr)
 
