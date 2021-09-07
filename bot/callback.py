@@ -91,8 +91,6 @@ async def cblist(_, query: CallbackQuery):
 
 » /vstream (reply to video or yt url) - to stream video
 » /vstop - end the video streaming
-» /play (reply to video or yt url) - to stream video
-» /end - end the video streaming
 » /song (song name) - download song from YT
 » /vsong (video name) - download video from YT
 » /lyric (song name) - lyric scrapper
