@@ -48,7 +48,7 @@ async def startvideo(client, m: Message):
         if len(m.command) < 2:
             await m.reply("💡 reply to video or provide youtube video url to start video streaming")
         else:
-            video = " ".join(message.command[1:])
+            video = " ".join(m.command[1:])
             youtube_regex = (
                 r'(https?://)?(www\.)?'
                 '(youtube|youtu|youtube-nocookie)\.(com|be)/'
@@ -58,9 +58,9 @@ async def startvideo(client, m: Message):
                 try:
                     x = video_link_getter(video)
                 except Exception as e:
-                    await m.reply(f"**Error** -- `{e}`")
+                    await m.reply(f"🚫 **error** - `{e}`")
                     return
-                msg = await m.reply("`Starting Live Stream...`")
+                msg = await m.reply("🔁 **starting video streaming...**")
                 chat_id = m.chat.id
                 await asyncio.sleep(1)
                 try:
