@@ -64,7 +64,6 @@ The easy way to host this bot, deploy to Heroku
 - [Safone](https://github.com/AsmSafone) Dev
 - [Zxce3](https://github.com/Zxce3) Dev
 - [Tofik](https://github.com/tofikdn) Dev
-- [Achu](https://github.com/Achu2234) Dev
 - [MarshalX](https://github.com/MarshalX) for [pytgcalls](https://github.com/MarshalX)
 - [Dan](https://github.com/delivrance) for [Pyrogram](https://github.com/pyrogram)
 
