@@ -1,73 +1,102 @@
-<h2 align="centre">VIDEO STREAM BOT</h2>
-
-telegram bot project for streaming video on telegram video chat, powered by [tgcalls](https://github.com/MarshalX/tgcalls) and [pyrogram](https://github.com/pyrogram/pyrogram)
-
-<p align="center"><a href="https://t.me/veezvidstreambot"><img src="https://telegra.ph/file/4e8717d59d74412cf0e50.jpg" width="300"></a></p>
+<p align="center"><a href="https://t.me/VeezVideoBot"><img src="https://github.com/zxce3/video-stream-beta/raw/main/driver/veezlogo.png"></a></p>
+<p align="center">
+    <br><b>Video Stream is an Advanced Telegram Bot that's allow you to play Video & Music on Telegram Group Video Chat</b><br>
+</p>
 <p align="center">
     <a href="https://www.python.org/" alt="made-with-python"> <img src="https://img.shields.io/badge/Made%20with-Python-black.svg?style=flat-square&logo=python&logoColor=blue&color=red" /></a>
-    <a href="https://github.com/zxce3/video-stream/graphs/commit-activity" alt="Maintenance"> <img src="https://img.shields.io/badge/Maintained%3F-yes-red.svg?style=flat-square" /></a>
-    <a href="https://app.codacy.com/gh/zxce3/video-stream/dashboard"> <img src="https://img.shields.io/codacy/grade/a723cb464d5a4d25be3152b5d71de82d?color=red&logo=codacy&style=flat-square" alt="Codacy" /></a><br>
-    <a href="https://github.com/zxce3/video-stream"> <img src="https://img.shields.io/github/repo-size/zxce3/video-stream?color=red&logo=github&logoColor=blue&style=flat-square" /></a>
-    <a href="https://github.com/zxce3/video-stream/commits/main"> <img src="https://img.shields.io/github/last-commit/zxce3/video-stream?color=red&logo=github&logoColor=blue&style=flat-square" /></a>
-    <a href="https://github.com/zxce3/video-stream/issues"> <img src="https://img.shields.io/github/issues/zxce3/video-stream?color=red&logo=github&logoColor=blue&style=flat-square" /></a>
-    <a href="https://github.com/zxce3/video-stream/network/members"> <img src="https://img.shields.io/github/forks/zxce3/video-stream?color=red&logo=github&logoColor=blue&style=flat-square" /></a>  
-    <a href="https://github.com/zxce3/video-stream/network/members"> <img src="https://img.shields.io/github/stars/zxce3/video-stream?color=red&logo=github&logoColor=blue&style=flat-square" /></a>  
+    <a href="https://github.com/zxce3/video-stream-beta/graphs/commit-activity" alt="Maintenance"> <img src="https://img.shields.io/badge/Maintained%3F-yes-red.svg?style=flat-square" /></a>
+    <a href="https://app.codacy.com/gh/zxce3/video-stream-beta/dashboard"> <img src="https://img.shields.io/codacy/grade/a723cb464d5a4d25be3152b5d71de82d?color=red&logo=codacy&style=flat-square" alt="Codacy" /></a><br>
+    <a href="https://github.com/zxce3/video-stream-beta"> <img src="https://img.shields.io/github/repo-size/zxce3/video-stream-beta?color=red&logo=github&logoColor=blue&style=flat-square" /></a>
+    <a href="https://github.com/zxce3/video-stream-beta/commits/main"> <img src="https://img.shields.io/github/last-commit/zxce3/video-stream-beta?color=red&logo=github&logoColor=blue&style=flat-square" /></a>
+    <a href="https://github.com/zxce3/video-stream-beta/issues"> <img src="https://img.shields.io/github/issues/zxce3/video-stream-beta?color=red&logo=github&logoColor=blue&style=flat-square" /></a>
+    <a href="https://github.com/zxce3/video-stream-beta/network/members"> <img src="https://img.shields.io/github/forks/zxce3/video-stream-beta?color=red&logo=github&logoColor=blue&style=flat-square" /></a>  
+    <a href="https://github.com/zxce3/video-stream-beta/network/members"> <img src="https://img.shields.io/github/stars/zxce3/video-stream-beta?color=red&logo=github&logoColor=blue&style=flat-square" /></a>  
 </p>
 
+## 📊 Stats
+[![CodeFactor](https://www.codefactor.io/repository/github/zxce3/video-stream-beta/badge)](https://www.codefactor.io/repository/github/zxce3/video-stream-beta)
+
+## 🧪 Get `SESSION_NAME` from below:
+
+[![GenerateString](https://img.shields.io/badge/repl.it-generateString-yellowgreen)](https://replit.com/@levinalab/StringSession#main.py) ``Pyrogram``
+
+## 🎭 Preview
+<p align="center">
+  <img src="https://telegra.ph/file/b8c1461bcbbad5664aa48.png">
+</p>
+
+## ✨ More Features
+- Music & Video stream support
+- MultiChat support
+- Playlist & Queue support
+- Skip, Pause, Resume, Stop feature
+- Music & Video downloader feature
+- Inline Search support
+- YouTube direct search support
+- YouTube/Local/Live/m3u8 stream support
+- Inline Search support
+- Control With Button support
+- Volume Control
+- Userbot Auto Join
+- Direct Updater
+
 ## 🛠 Commands:
-- /vstream (reply to video) - to start video streaming
-- /vstop - to stop video streaming
-- /song (song name) - to download song
-- /vsong (video name) - to download video
-- /lyric (query) - lyric scrapper
-- /tts (reply to text) - text to speech
-- /alive - check the bot alive status
-- /ping - check the bot ping status
-- /uptime - check the bot uptime status
-- /sysinfo - show the bot system information
-
-📝 Note: From now, /vstream & /vstop command can only be used by group admins.
-
-## 🧪 Get STRING_SESSION from below:
-
-TAP THIS: [![GenerateString](https://img.shields.io/badge/repl.it-generateString-yellowgreen)](https://replit.com/@levinalab/StringSession#main.py)
-
+| Command | Description |
+| ------ | ------ |
+| `/play (query)` | play music from youtube |
+| `/vplay (query)` | play video from youtube |
+| `/vstream (live link)` | play video live streaming video |
+| `/pause` | pause the streaming (admin only) |
+| `/resume` | resume the streaming (admin only) |
+| `/skip` | switch to next stream (admin only) |
+| `/stop` | end the streaming (admin only) |
+| `/vmute` | for mute the userbot on voice chat |
+| `/vunmute` | for unmute the userbot on voice chat |
+| `/volume 1/200` | adjust the volume of userbot (userbot must be admin) |
+| `/playlist` | show you all the current stream list |
+| `/song (query)` | download music from youtube |
+| `/video (query)` | download video from youtube |
+| `/userbotjoin` | invite the userbot to join group (admin only) |
+| `/userbotleave` | instruct userbot to leave the group (admin only) |
+| `/leaveall` | order the userbot to leave from all group (sudo only) |
+| `/update` | update your bot directly without leaving telegram (sudo only) |
+| `/restart` | restart your bot directly without leaving telegram (sudo only) |
+| `/clean` | clean all raw files |
+| `/rmd` | clean all downloaded files |
 ## Heroku Deployment 💜
-The easy way to host this bot, deploy to Heroku
+The easy way to host this bot, deploy to Heroku, Change the app country to Europe (it will help to make the bot stable).
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zxce3/video-stream)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zxce3/video-stream-beta)
 
-# Railway Deployment 🚄
-[![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/zxce3/video-stream&envs=API_ID,API_HASH,BOT_TOKEN,BOT_USERNAME,ASSISTANT_NAME,SESSION_NAME,SUDO_USERS,DURATION_LIMIT)
+## VPS Deployment 📡
+Get the best Quality of streaming performance by hosting it on VPS, here's the step's:
 
-## VPS Deployment
 ```sh
-- sudo apt update && upgrade -y
-- sudo apt install python3-pip -y virtualenv
-- sudo apt install ffmpeg -y
-- git clone https://github.com/zxce3/video-stream
-- cd video-stream
-- virtualenv venv #Create Virtual Environment.
-- source venv/bin/activate #Activate Virtual Environment
-- pip3 install --upgrade pip
-- pip3 install -U -r requirements.txt
-- cp -r sample.env local.env
-- nano local.env #Fill it with your variables value.
-- python3 -m bot
+sudo apt update && apt upgrade -y
+sudo apt install git curl python3-pip ffmpeg -y
+pip3 install -U pip
+curl -sL https://deb.nodesource.com/setup_16.x | bash -
+sudo apt-get install -y nodejs
+npm i -g npm
+git clone https://github.com/zxce3/video-stream-beta # clone the repo.
+cd video-stream-beta
+pip3 install -U -r requirements.txt
+cp example.env .env # use vim to edit ENVs
+vim .env # fill up the ENVs (Steps: press i to enter in insert mode then edit the file. Press Esc to exit the editing mode then type :wq! and press Enter key to save the file).
+python3 main.py # run the bot.
+
+# continue the host with screen or anything else, thanks for reading.
 ```
 
+# Credits 💖
 
-# Special Credits 💖
-
-- [Levina](https://github.com/levina-lab) Dev
-- [SammyXD](https://github.com/Sammy-XD) Dev
-- [Safone](https://github.com/AsmSafone) Dev
-- [Zxce3](https://github.com/Zxce3) Dev
-- [Tofik](https://github.com/tofikdn) Dev
-- [MarshalX](https://github.com/MarshalX) for [pytgcalls](https://github.com/MarshalX)
-- [Dan](https://github.com/delivrance) for [Pyrogram](https://github.com/pyrogram)
-
-Thanks to all people above for helping this project and many more people who aren't mentioned here, but can be found in [Contributor List](https://github.com/zxce3/video-stream/graphs/contributors)
+- [Levina](https://github.com/levina-lab) ``Dev``
+- [Zxce3](https://github.com/Zxce3) ``Dev``
+- [DoellBarr](https://github.com/DoellBarr) ``Dev``
+- [tofikdn](https://github.com/tofikdn) ``Dev``
+- [Makoto-XD](https://github.com/Makoto-XD) ``Supporter``
+- [Laky's](https://github.com/Laky-64) for [``py-tgcalls``](https://github.com/pytgcalls/pytgcalls)
+- [Dan](https://github.com/delivrance) for [``Pyrogram``](https://github.com/pyrogram)
 
 ### Support & Updates 🎑
 <a href="https://t.me/VeezSupportGroup"><img src="https://img.shields.io/badge/Join-Group%20Support-blue.svg?style=for-the-badge&logo=Telegram"></a> <a href="https://t.me/levinachannel"><img src="https://img.shields.io/badge/Join-Updates%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
